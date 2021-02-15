@@ -1,8 +1,4 @@
-/**
- * Created by Rebecca Burke
- * The below program is the welcome window of our console. It's purpose is to amalgamate the games we have coded and
- * display them as playing options for the user to select from,
- **/
+
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
