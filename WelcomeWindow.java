@@ -26,7 +26,7 @@ public class WelcomeWindow
 
       // Listing the games to the user
       System.out.println("\n\t\t**INSERT NAME** supports the games:");
-      System.out.println("1.)\tMatthew's game - Description"); // Matthew's game
+      System.out.println("1.)\tMark's game - Description"); // Mark's game
       System.out.println("2.)\tRachel's game - Description"); // Rachel's game
       System.out.println("3.)\tSeong's game - Description"); // Seong's game
       System.out.println("4.)\tRebecca's game - Description"); // Rebecca's game
@@ -51,10 +51,10 @@ public class WelcomeWindow
          // Declaring a switch statement which will call the game that the user has chosen to play
          switch (gameSelection)
          {
-            // Calling Matthew's game to play
+            // Calling Mark's game to play
             case 1:
-               // Matthew's game code
-               System.out.println("Matthew");
+               // Mark's game code
+               System.out.println("Mark");
                   /*
 
 
@@ -121,7 +121,7 @@ public class WelcomeWindow
                // Declaring an array with the list of game names
                ArrayList<String> gamesAvailable = new ArrayList<String>();
                // adding the game options
-               gamesAvailable.add("Matthew's game");
+               gamesAvailable.add("Mark's game");
                gamesAvailable.add("Rachel's game");
                gamesAvailable.add("Seong's game");
                gamesAvailable.add("Rebecca's game");
@@ -137,7 +137,7 @@ public class WelcomeWindow
                keyboard.nextLine();
 
                // Accessing the game which has been randomly selected
-               // If the first element in the array list has been selected then we want to play Matthew's game
+               // If the first element in the array list has been selected then we want to play Mark's game
                if (gameSelected == 0){
                   gameSelection=1;
                }
