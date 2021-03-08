@@ -55,7 +55,7 @@ public class playersAge
       for (int loop = 0; loop < numOfPlayers; loop++) {
          System.out.print("Enter the name of player " + (loop + 1) + " :");
          String name = input.nextLine();
-         players p1 = new players();
+         players p1 = new players(); //creating players objects from players class
          p1.setName(name);
          arrPlayers.add(p1); //adding to array list
          System.out.println("Enter date: ") ;
