@@ -4,6 +4,7 @@
  * display them as playing options for the user to select from,
  **/
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 public class WelcomeWindow
@@ -15,28 +16,49 @@ public class WelcomeWindow
    private static int gameSelection;
 
    // Declaring a method which will welcome the user to the application,
-   private static void welcome(){
+   private static void welcome()
+   {
       // Welcoming the user to the game
       System.out.println("\n\t\t\tWelcome to **INSERT NAME**. \n**INSERT NAME** is a console which allows you to play \ndrinking games with your friends virtually and safely.");
 
    }
    // prompt them to enter their selected game and stores the
    // entry from the keyboard in the variable gameSelection
-   private static void options(){
+   private static void options()
+   {
+      boolean pass = false;
+      do
+      {
+         // Listing the games to the user
+         System.out.println("\n\t\t**INSERT NAME** supports the games:");
+         System.out.println("1.)\tBattleShots 2.0"); // Mark's game
+         System.out.println("2.)\tRachel's game - Description"); // Rachel's game
+         System.out.println("3.)\tSeong's game - Description"); // Seong's game
+         System.out.println("4.)\tRebecca's game - Description"); // Rebecca's game
+         System.out.println("5.)\tSurprise me! - We will decide on a game for you to play.");
+         System.out.println("6.)\tExit");
+         System.out.print("Please select a method of play by entering the number associated with your chosen game from the menu above : ");
 
-      // Listing the games to the user
-      System.out.println("\n\t\t**INSERT NAME** supports the games:");
-      System.out.println("1.)\tMark's game - Description"); // Mark's game
-      System.out.println("2.)\tRachel's game - Description"); // Rachel's game
-      System.out.println("3.)\tSeong's game - Description"); // Seong's game
-      System.out.println("4.)\tRebecca's game - Description"); // Rebecca's game
-      System.out.println("5.)\tSurprise me! - We will decide on a game for you to play.");
-      System.out.println("6.)\tExit");
-      System.out.println("Please select a method of play by entering the number associated with your chosen game from the menu above.");
-
-      // Declaring the variable gameSelection and assigning it to the users game selection
-      gameSelection = keyboard.nextInt();
+         // Declaring the variable gameSelection and assigning it to the users game selection
+         try
+         {
+            gameSelection = keyboard.nextInt();
+            if (gameSelection >= 0)
+            {
+            pass = true;
+            }else
+            {
+               System.out.println("Input must be greater that O");
+            }//if user inputs 0 or less
+         } catch (InputMismatchException error1)
+         {
+            System.out.println("Selection must be a number between 1 and 6");
+            keyboard.nextLine();
+            pass = false;
+         }//If user inputs a letter
+      } while (pass != true);
    }
+
    public static void main(String[] args)
    {
       welcome();
@@ -51,17 +73,11 @@ public class WelcomeWindow
          // Declaring a switch statement which will call the game that the user has chosen to play
          switch (gameSelection)
          {
-            // Calling Mark's game to play
+
             case 1:
                // Mark's game code
-               System.out.println("Mark");
-                  /*
-
-
-                  Enter your code here
-
-
-                   */
+               BattleShots2 battleshots = new BattleShots2();
+               battleshots.battleshotsStart();
                // Asking the user if they wish to select another game
                options();
                break;
@@ -71,11 +87,7 @@ public class WelcomeWindow
                // Rachel's game code
                System.out.println("Rachel");
                   /*
-
-
                   Enter your code here
-
-
                    */
                // Asking the user if they wish to select another game
                options();
@@ -86,11 +98,7 @@ public class WelcomeWindow
                // Seong's game code
                System.out.println("Seong");
                   /*
-
-
                   Enter your code here
-
-
                    */
                // Asking the user if they wish to select another game
                options();
@@ -101,11 +109,7 @@ public class WelcomeWindow
                // Rebecca's game code
                System.out.println("Rebecca");
                   /*
-
-
                   Enter your code here
-
-
                    */
 
                // Asking the user if they wish to select another game
@@ -121,10 +125,12 @@ public class WelcomeWindow
                // Declaring an array with the list of game names
                ArrayList<String> gamesAvailable = new ArrayList<String>();
                // adding the game options
-               gamesAvailable.add("Mark's game");
+               gamesAvailable.add("BattleShots 2.0");
                gamesAvailable.add("Rachel's game");
                gamesAvailable.add("Seong's game");
                gamesAvailable.add("Rebecca's game");
+
+
 
                // Declaring randomSelect as an instance of Random
                Random randomSelect = new Random();
