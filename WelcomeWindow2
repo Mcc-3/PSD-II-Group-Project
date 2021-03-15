@@ -1,0 +1,189 @@
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Random;
+
+/**
+ * Created by MarkC on 15/03/2021
+ * COMMENTS ABOUT PROGRAM HERE
+ **/
+public class WelcomeWindow2
+{
+
+   private static void welcome()
+   {
+      JOptionPane.showMessageDialog(null, "Welcome to **INSERT NAME\n" +
+                  "INSERT NAME** is a console which allows \nyou to play " +
+            "drinking games with your \nfriends virtually and safely" +
+            JOptionPane.INFORMATION_MESSAGE);
+   }
+   public static int gameSelection = 0;
+   private static int options()
+   {
+
+      boolean pass = false;
+      do
+      {
+         try
+         {
+
+            gameSelection = Integer.parseInt(JOptionPane.showInputDialog(null,
+                  "**INSERT NAME** supports the games\n" +
+                        "1.) BattleShots 2.0\n" +
+                        "2.) Rachel's game - Description\n" +
+                        "3.) Seong's game - Description \n " +
+                        "4.) Rebecca's game - Description\n" +
+                        "5.) Surprise me! - We will decide on a game for you to play.\n" +
+                        "6.) Exit\n" +
+                        "Please select a game by entering the number\n " +
+                        "associated with your chosen game from the menu",
+                  "Group 2", JOptionPane.INFORMATION_MESSAGE));//Question for amount of rounds
+
+
+            if (gameSelection >= 0)
+            {
+               pass = true;
+            } else
+            {
+               JOptionPane.showMessageDialog(null,
+                     "Input must be 0 or more. Click ok to try again",
+                     "Group 2", JOptionPane.INFORMATION_MESSAGE);//if input rounds less than 0
+            }
+
+         } catch (NumberFormatException | InputMismatchException errorQ2)
+         {
+            JOptionPane.showMessageDialog(null, "You must " +
+                        "input a number eg. 5, Press enter to try again", "Group 2",
+                  JOptionPane.INFORMATION_MESSAGE);//if letter is put ino rounds box
+            pass = false;
+         }
+      }
+      while (!pass);
+      return gameSelection;
+   }
+
+
+
+   public static void main(String[] args)
+   {
+      welcome();
+      options();
+
+      // Setting up a terminator
+      String terminator = "play";
+
+      // Declaring a while loop which allows the user to continue playing after completing their initial game
+      while (terminator != "exit")
+      {
+         // Declaring a switch statement which will call the game that the user has chosen to play
+         switch (gameSelection)
+         {
+
+            case 1:
+               // Mark's game code
+               //BattleShots2 battleshots = new BattleShots2();
+               //battleshots.battleshotsStart();
+               // Asking the user if they wish to select another game
+               options();
+               break;
+// --------------------------------------------------------------------------------------------------------------------
+            // Calling Rachel's game to play
+            case 2:
+               // Rachel's game code
+               JOptionPane.showMessageDialog(null, "Rachel's Game");
+                  /*
+                  Enter your code here
+                   */
+               // Asking the user if they wish to select another game
+               options();
+               break;
+// --------------------------------------------------------------------------------------------------------------------
+            // Calling Seong's game to play
+            case 3:
+               // Seong's game code
+               JOptionPane.showMessageDialog(null, "Seong's Game");
+                  /*
+                  Enter your code here
+                   */
+               // Asking the user if they wish to select another game
+               options();
+               break;
+// --------------------------------------------------------------------------------------------------------------------
+            // Calling the truth or drink game to play
+            case 4:
+               // Rebecca's game code
+               JOptionPane.showMessageDialog(null, "Rebecca's Game");
+                  /*
+                  Enter your code here
+                   */
+               // Asking the user if they wish to select another game
+               options();
+               break;
+            // Randomly selecting one of the games for the users to play
+            case 5:
+               // Surprise me code which randomly generates one of the games to play
+
+               JOptionPane.showMessageDialog(null, "You have chosen to play 'Surprise me!'\n" +
+                     "We will randomly select a game for you to play.\n" +
+                     "We've chosen...","Group 2", JOptionPane.INFORMATION_MESSAGE);
+
+               // Declaring an array with the list of game names
+               ArrayList<String> gamesAvailable = new ArrayList<String>();
+               // adding the game options
+               gamesAvailable.add("BattleShots 2.0");
+               gamesAvailable.add("Rachel's game");
+               gamesAvailable.add("Seong's game");
+               gamesAvailable.add("Rebecca's game");
+
+
+               // Declaring randomSelect as an instance of Random
+               Random randomSelect = new Random();
+
+               // Randomly selecting a truth using randomSelect
+               int gameSelected = randomSelect.nextInt(gamesAvailable.size());
+
+               // printing the selected game on screen
+               JOptionPane.showMessageDialog(null, gamesAvailable.get(gameSelected));
+
+
+               // Accessing the game which has been randomly selected
+               // If the first element in the array list has been selected then we want to play Mark's game
+               if (gameSelected == 0)
+               {
+                  gameSelection = 1;
+               }
+               // If the second element in the array list has been selected then we want to play Rachel's game
+               else if (gameSelected == 1)
+               {
+                  gameSelection = 2;
+               }
+               // If the third element in the array list has been selected then we want to play Seong's game
+               else if (gameSelected == 2)
+               {
+                  gameSelection = 3;
+               }
+               // Else we want to play Rebecca's game
+               else
+               {
+                  gameSelection = 4;
+               }
+               break;
+// --------------------------------------------------------------------------------------------------------------------
+            // Exiting the system
+            case 6:
+               JOptionPane.showMessageDialog(null,"We're sorry you're " +
+                     "leaving, but thank you for playing!");
+               // Setting the terminator to play so that the while loop will continue
+               terminator = "exit";
+               break;
+            // Declaring a default message for any entries which aren't in the cases
+            default:
+               // Asking the user to enter a valid input
+               JOptionPane.showMessageDialog(null,"Your entry is invalid! Please enter a selection from the options available.");
+               // Assigning the gameSelection variable to the users game selection
+               //gameSelection = keyboard.nextInt();
+               break;
+         }
+         }
+   }//main
+}//class
